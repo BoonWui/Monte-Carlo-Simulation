@@ -1,7 +1,34 @@
-# Monte-Carlo-Simulation
-Simulates future stock and cryptocurrency prices using Monte Carlo methods and historical market data from Yahoo Finance.
+# Monte Carlo Price Simulation
 
-Disclaimer
-This project is intended for educational and research purposes only. It does not constitute financial advice, investment recommendations, or trading strategies. The simulations and forecasts generated are based on historical data and probabilistic models, which may not reflect real future performance.
+Simulates future stock and cryptocurrency prices with Monte Carlo methods, using historical data from Yahoo Finance.
 
-Use at your own risk. Always consult with a qualified financial advisor before making investment decisions. The author and contributors are not responsible for any financial losses or damages arising from the use of this tool or the information provided.
+**Try it in the browser:** [Monte Carlo Simulator](https://boonwui.github.io/monte-carlo/)
+
+## Models
+
+| Script | Model |
+|---|---|
+| `monte carlo simulation gbm.py` | **Geometric Brownian motion:** constant drift and volatility estimated from history. |
+| `monte carlo simulation heston.py` | **Heston stochastic volatility:** volatility itself moves randomly and reverts to a long-run level. This gives fatter tails than GBM. |
+| `monte carlo simulation stock.py` | **Normal daily returns:** each day's return is drawn from a normal distribution with the historical mean and standard deviation. |
+
+For each ticker, the scripts:
+
+1. download price history with `yfinance`,
+2. simulate thousands of price paths over 252 trading days (one year),
+3. plot the distribution of final prices and the expected percentage return for each ticker.
+
+## Setup and run
+
+```bash
+pip install yfinance numpy matplotlib
+python "monte carlo simulation heston.py"
+```
+
+Edit the ticker list at the bottom of each script.
+
+## Disclaimer
+
+For education and research only. This is not financial advice. Simulations are based on historical data and models, which may not reflect future performance.
+
+Part of [BoonWui's portfolio](https://boonwui.github.io).
